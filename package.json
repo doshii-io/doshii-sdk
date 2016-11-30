@@ -1,0 +1,41 @@
+{
+  "name": "doshii-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "",
+  "author": "",
+  "files": [
+    "dist"
+  ],
+  "main": "./lib/doshii.js",
+  "keywords": [
+    ""
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "6.9.0",
+    "babel-register": "^6.9.0",
+    "eslint": "^3.1.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "yjimk/doshii-sdk",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "btoa": "^1.1.2",
+    "lodash": "^4.17.2",
+    "qs": "^6.3.0",
+    "request": "^2.79.0",
+    "ws": "^1.1.1"
+  }
+}

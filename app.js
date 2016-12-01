@@ -17,6 +17,7 @@ Doshii.ws.on('member_created', (event) => {
   if (!event.emit) return
   console.log(event.emit)
 })
+
 Doshii.Locations.retrieveAll().then((result) => {
   console.log(result)
 }).catch((err) => {

@@ -56,9 +56,27 @@ Doshii.ws.on('member_created', (event) => {
 //   console.log(result)
 // })
 
-Doshii.Members.create({
-  id: 1,
-  doshiiOrganisationId: 2
+Doshii.Orders.create({
+  consumer: {
+    name: 'Tony T',
+    phone: '01234567890'
+  },
+  order: {
+    type: 'pickup',
+    surcounts: [],
+    items: [{
+      name: 'Toasted Sourdough Bread & Eggs',
+      description: 'Just ye old classic',
+      unitPrice: 1100,
+      totalBeforeSurcounts: 1100,
+      totalAfterSurcounts: 1100,
+      posId: 'toasted_eggs',
+      quantity: 1,
+      surcounts: [],
+      options: []
+    }]
+  },
+  doshiiLocationId: 'p7PEkVxe'
 }, (err, result) => {
   if (err) console.log(err)
   console.log(result)

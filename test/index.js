@@ -671,3 +671,51 @@ describe('Tables', () => {
     })
   })
 })
+
+describe('Transactions', () => {
+  describe('.retrieveOne', () => {
+    describe('GET /partner/v3/transactions/:id', () => {
+      it('should retrieve a transaction', (done) => {
+        Doshii.Transactions.retrieveOne({
+          transactionId: 1
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.create', () => {
+    describe('POST /partner/v3/transactions/:id', () => {
+      it('should create a transaction', (done) => {
+        Doshii.Transactions.create({
+          amount: '1000',
+          orderId: '6343'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.update', () => {
+    describe('PUT /partner/v3/transactions/:id', () => {
+      it('should update a transaction', (done) => {
+        Doshii.Transactions.update({
+          amount: '2000',
+          transactionId: 1,
+          version: 'INVALID'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+})

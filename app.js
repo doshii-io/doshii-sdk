@@ -112,7 +112,7 @@ Doshii.ws.on('error', (err) => {
 // })
 
 Doshii.Reservations.update({
-  id: 6231,
+  reservationId: 6231,
   tableNames: ['Table 1'],
   date: '2016-04-12T20:54:25.289Z',
   covers: '4',

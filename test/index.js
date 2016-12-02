@@ -9,7 +9,7 @@ describe('Checkins', () => {
     describe('GET /partner/v3/checkins/:id', () => {
       it('should retrieve a checkin', (done) => {
         Doshii.Checkins.retrieveOne({
-          id: 1,
+          checkinId: 1,
           doshiiLocationId: 'p7PEkVxe'
         }, (err, result) => {
           console.log(result)
@@ -41,7 +41,7 @@ describe('Locations', () => {
     describe('GET /partner/v3/locations/:id/menu', () => {
       it('should retrieve a menu from a location', (done) => {
         Doshii.Locations.retrieveMenu({
-          id: 'p7PEkVxe'
+          locationId: 'p7PEkVxe'
         }).then((result) => {
           assert.isOk(result, 'returned a result')
           expect(result).to.be.ok
@@ -74,7 +74,7 @@ describe('Members', () => {
     describe('GET /partner/v3/members/:id', () => {
       it('should retrieve a member in an organisation', (done) => {
         Doshii.Members.retrieveOne({
-          id: 1,
+          memberId: 1,
           doshiiOrganisationId: 2
         }, (err, result) => {
           console.log(result)
@@ -116,7 +116,7 @@ describe('Members', () => {
     describe('PUT /partner/v3/members/:id', () => {
       it('should update a member in an organisation', (done) => {
         Doshii.Members.update({
-          id: 1,
+          memberId: 1,
           points: 100,
           doshiiOrganisationId: 2
         }, (err, result) => {
@@ -132,7 +132,7 @@ describe('Members', () => {
     describe('DELETE /partner/v3/members/:id', () => {
       it('should remove a member from an organisation', (done) => {
         Doshii.Members.remove({
-          id: 1,
+          memberId: 1,
           doshiiOrganisationId: 2
         }, (err, result) => {
           console.log(result)
@@ -164,7 +164,7 @@ describe('Orders', () => {
     describe('GET /partner/v3/orders/:id', () => {
       it('should retrieve an order in a location', (done) => {
         Doshii.Orders.retrieveOne({
-          id: 1,
+          orderId: 1,
           doshiiLocationId: 'p7PEkVxe'
         }, (err, result) => {
           console.log(result)
@@ -212,7 +212,7 @@ describe('Orders', () => {
     describe('PUT /partner/v3/orders/:id', () => {
       it('should update an order in a location', (done) => {
         Doshii.Orders.update({
-          id: 1,
+          orderId: 1,
           status: 'cancelled',
           version: 'INVALID',
           doshiiLocationId: 'p7PEkVxe'
@@ -229,7 +229,7 @@ describe('Orders', () => {
     describe('GET /partner/v3/orders/:id/transactions', () => {
       it('should retrieve all transactions for an order in a location', (done) => {
         Doshii.Orders.retrieveTransactions({
-          id: 1,
+          orderId: 1,
           doshiiLocationId: 'p7PEkVxe'
         }, (err, result) => {
           console.log(result)
@@ -244,7 +244,7 @@ describe('Orders', () => {
     describe('POST /partner/v3/orders/:id/transactions', () => {
       it('should create a new transaction for an order in a location', (done) => {
         Doshii.Orders.createTransaction({
-          id: 1,
+          orderId: 1,
           amount: 1000,
           status: 'pending',
           doshiiLocationId: 'p7PEkVxe'
@@ -283,7 +283,7 @@ describe('Reservations', () => {
     describe('GET /partner/v3/bookings/:id', () => {
       it('should retrieve a reservations for a location', (done) => {
         Doshii.Reservations.retrieveOne({
-          id: 1,
+          reservationId: 1,
           doshiiLocationId: 'p7PEkVxe'
         }, (err, result) => {
           console.log(result)
@@ -329,7 +329,7 @@ describe('Reservations', () => {
     describe('PUT /partner/v3/bookings/:id', () => {
       it('should update a reservation for a location', (done) => {
         Doshii.Reservations.update({
-          id: 6231,
+          reservationId: 6231,
           tableNames: ['Table 1'],
           date: '2016-04-12T20:54:25.289Z',
           covers: '4',
@@ -362,7 +362,7 @@ describe('Reservations', () => {
     describe('DELETE /partner/v3/bookings/:id', () => {
       it('should remove a reservations for a location', (done) => {
         Doshii.Reservations.remove({
-          id: 6231,
+          reservationId: 6231,
           doshiiLocationId: 'p7PEkVxe'
         }, (err, result) => {
           console.log(result)
@@ -377,10 +377,216 @@ describe('Reservations', () => {
     describe('POST /partner/v3/bookings/:id/checkins', () => {
       it('should create a checkin for a reservation at a location', (done) => {
         Doshii.Reservations.createCheckin({
-          id: 6231,
+          reservationId: 6231,
           tableNames: ['Table 1'],
           covers: '4',
           doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+})
+
+describe('Rewards', () => {
+  describe('.retrieveAll', () => {
+    describe('GET /partner/v3/members/:id/rewards', () => {
+      it('should retrieve all rewards for a member', (done) => {
+        Doshii.Rewards.retrieveAll({
+          memberId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.retrieveOne', () => {
+    describe('GET /partner/v3/members/:memberId/rewards/:rewardId', () => {
+      it('should retrieve a rewards for a member', (done) => {
+        Doshii.Rewards.retrieveOne({
+          memberId: 1,
+          rewardId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.create', () => {
+    describe('POST /partner/v3/members/:memberId/rewards', () => {
+      it('should create a rewards for a member', (done) => {
+        Doshii.Rewards.create({
+          memberId: 1,
+          rewards: [{
+            ref: '123',
+            name: '10% off your order',
+            description: 'Any suitable description if any',
+            surcountType: 'percentage',
+            surcountAmount: '-10'
+          }, {
+            ref: '456',
+            name: '$10 off your next shirt',
+            eligibleTags: ['shirts'],
+            surcountType: 'absolute',
+            surcountAmount: '-1000'
+          }, {
+            ref: '789',
+            name: '$5 off any meal (when you spend $20+)',
+            minOrderValue: '2000',
+            surcountType: 'absolute',
+            surcountAmount: '-500'
+          }],
+          doshiiOrganisationId: 'A0yZ8EeK'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.update', () => {
+    describe('PUT /partner/v3/members/:memberId/reward/:rewardId', () => {
+      it('should update all rewards for a member', (done) => {
+        Doshii.Rewards.update({
+          memberId: 1,
+          rewardId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK',
+          ref: '123',
+          name: '$10 off your order',
+          description: 'Our treat to you',
+          surcountType: 'absolute',
+          surcountAmount: '-1000'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.updateAll', () => {
+    describe('PUT /partner/v3/members/:memberId/reward', () => {
+      it('should update all rewards for a member', (done) => {
+        Doshii.Rewards.updateAll({
+          memberId: 1,
+          rewardId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK',
+          rewards: [{
+            ref: '123',
+            name: '10% off your order',
+            description: 'Any suitable description if any',
+            surcountType: 'percentage',
+            surcountAmount: '-10'
+          }, {
+            ref: '456',
+            name: '$10 off your next shirt',
+            eligibleTags: ['shirts'],
+            surcountType: 'absolute',
+            surcountAmount: '-1000'
+          }, {
+            ref: '789',
+            name: '$5 off any meal (when you spend $20+)',
+            minOrderValue: '2000',
+            surcountType: 'absolute',
+            surcountAmount: '-500'
+          }]
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.remove', () => {
+    describe('DELETE /partner/v3/members/:memberId/reward/:rewardId', () => {
+      it('should remove a reward from a member', (done) => {
+        Doshii.Rewards.remove({
+          memberId: 1,
+          rewardId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.accept', () => {
+    describe('PUT /partner/v3/members/:memberId/reward/:rewardId/accept', () => {
+      it('should accept and consume a reward for a member', (done) => {
+        Doshii.Rewards.accept({
+          memberId: 1,
+          rewardId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK',
+          consume: true
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.reject', () => {
+    describe('PUT /partner/v3/members/:memberId/reward/:rewardId/reject', () => {
+      it('should reject and consume a reward for a member', (done) => {
+        Doshii.Rewards.reject({
+          memberId: 1,
+          rewardId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK',
+          consume: true,
+          reason: 'Not applicable'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.acceptPoints', () => {
+    describe('PUT /partner/v3/members/:memberId/points/accept', () => {
+      it('should accept points for a member', (done) => {
+        Doshii.Rewards.acceptPoints({
+          memberId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.rejectPoints', () => {
+    describe('PUT /partner/v3/members/:memberId/points/reject', () => {
+      it('should reject points for a member', (done) => {
+        Doshii.Rewards.rejectPoints({
+          memberId: 1,
+          doshiiOrganisationId: 'A0yZ8EeK',
+          reason: 'Not applicable'
         }, (err, result) => {
           console.log(result)
           assert.isNotOk(err, 'returned an error')

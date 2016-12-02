@@ -597,3 +597,77 @@ describe('Rewards', () => {
     })
   })
 })
+
+describe('Tables', () => {
+  describe('.retrieveAll', () => {
+    describe('GET /partner/v3/tables', () => {
+      it('should retrieve all tables for a location', (done) => {
+        Doshii.Tables.retrieveAll({
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.retrieveOne', () => {
+    describe('GET /partner/v3/tables/:name', () => {
+      it('should retrieve a table by name for a location', (done) => {
+        Doshii.Tables.retrieveAll({
+          name: 'Table 1',
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.retrieveBookings', () => {
+    describe('GET /partner/v3/tables/:name/bookings', () => {
+      it('should retrieve bookings for a table by name for a location', (done) => {
+        Doshii.Tables.retrieveBookings({
+          name: 'Table 1',
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          done()
+        })
+      })
+    })
+  })
+  describe('.retrieveCheckins', () => {
+    describe('GET /partner/v3/tables/:name/checkins', () => {
+      it('should retrieve checkins for a table by name for a location', (done) => {
+        Doshii.Tables.retrieveCheckins({
+          name: 'Table 1',
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          done()
+        })
+      })
+    })
+  })
+  describe('.retrieveOrders', () => {
+    describe('GET /partner/v3/tables/:name/orders', () => {
+      it('should retrieve orders for a table by name for a location', (done) => {
+        Doshii.Tables.retrieveOrders({
+          name: 'Table 1',
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          done()
+        })
+      })
+    })
+  })
+})

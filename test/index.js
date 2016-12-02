@@ -247,7 +247,139 @@ describe('Orders', () => {
           id: 1,
           amount: 1000,
           status: 'pending',
-          version: 'INVALID',
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+})
+
+describe('Reservations', () => {
+  describe('.retrieveAll', () => {
+    describe('GET /partner/v3/bookings(queryString)', () => {
+      it('should retrieve all reservations for a location', (done) => {
+        Doshii.Reservations.retrieveAll({
+          from: 1,
+          to: 1472709049,
+          limit: 50,
+          offset: 0,
+          seated: false,
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.retrieveOne', () => {
+    describe('GET /partner/v3/bookings/:id', () => {
+      it('should retrieve a reservations for a location', (done) => {
+        Doshii.Reservations.retrieveOne({
+          id: 1,
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.create', () => {
+    describe('POST /partner/v3/bookings', () => {
+      it('should create a reservation for a location', (done) => {
+        Doshii.Reservations.create({
+          tableNames: ['Table 1'],
+          date: '2016-04-12T20:54:25.289Z',
+          covers: '4',
+          ref: '813889491',
+          consumer: {
+            name: '4',
+            email: 'user@test.com',
+            phone: '0415 123 456',
+            address: {
+              line1: '616 St Kilda Road',
+              line2: 'Level 8',
+              city: 'Melbourne',
+              state: 'VIC',
+              postalCode: '3004',
+              country: 'AU'
+            }
+          },
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.update', () => {
+    describe('PUT /partner/v3/bookings/:id', () => {
+      it('should update a reservation for a location', (done) => {
+        Doshii.Reservations.update({
+          id: 6231,
+          tableNames: ['Table 1'],
+          date: '2016-04-12T20:54:25.289Z',
+          covers: '4',
+          ref: '813889491',
+          consumer: {
+            name: '4',
+            email: 'user@test.com',
+            phone: '0415 123 456',
+            address: {
+              line1: '616 St Kilda Road',
+              line2: 'Level 8',
+              city: 'Melbourne',
+              state: 'VIC',
+              postalCode: '3004',
+              country: 'AU'
+            }
+          },
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(err)
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.remove', () => {
+    describe('DELETE /partner/v3/bookings/:id', () => {
+      it('should remove a reservations for a location', (done) => {
+        Doshii.Reservations.remove({
+          id: 6231,
+          doshiiLocationId: 'p7PEkVxe'
+        }, (err, result) => {
+          console.log(result)
+          assert.isNotOk(err, 'returned an error')
+          assert.isOk(result, 'returned a result')
+          done()
+        })
+      })
+    })
+  })
+  describe('.createCheckin', () => {
+    describe('POST /partner/v3/bookings/:id/checkins', () => {
+      it('should create a checkin for a reservation at a location', (done) => {
+        Doshii.Reservations.createCheckin({
+          id: 6231,
+          tableNames: ['Table 1'],
+          covers: '4',
           doshiiLocationId: 'p7PEkVxe'
         }, (err, result) => {
           console.log(result)

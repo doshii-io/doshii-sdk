@@ -1,7 +1,5 @@
 # Doshii-SDK [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> doshii-sdk
-
-A NodeJS wrapper for the Doshii Partner API
+> A wrapper for the Doshii Partner API
 
 Currently a work in progress, would use for reference only at this point.
 
@@ -20,11 +18,12 @@ $ yarn add doshii-sdk
 ```js
 const Doshii = require('doshii-sdk')()
 
-Doshii.Locations.retrieveAll().then((result) => {
-  console.log(result)
-}).catch((err) => {
-  console.log(err)
-})
+Doshii.Locations.retrieveAll()
+  .then((result) => {
+    console.log(result)
+  }).catch((err) => {
+    console.log(err)
+  })
 
 // Both Promises and Callbacks supported
 

@@ -41,7 +41,7 @@ Doshii.Locations.retrieveAll()
   })
 
 Doshii.Locations.findMenu({
-  id: 'HASHED_LOCATION_ID'
+  locationId: 'HASHED_LOCATION_ID' // Required
 }, (err, result) => {
   if (err) // Manage any errors here
   // Do awesome stuff here

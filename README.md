@@ -49,9 +49,16 @@ Doshii.Locations.findMenu({
 ```
 A breakdown of the methods available are available on the [wiki](https://github.com/yjimk/doshii-sdk/wiki) page
 
-##
+## Contributing
 
+We LOVE PRs. Contribution is the foundation of open source and what makes the development community so great.
 
+In saying that, it would really help out a bunch if you follow a few guidelines before submitting a PR for this repo.
+
+- Please update/create then run tests (check out the /test folder). You'll need a DOSHII_CLIENT_ID and DOSHII_CLIENT_SECRET set as environment variables.
+- Please keep the coding style consistent. If you use eslint, the standard babel config is being used and will be applied when installing dependencies for this repo. Simply put, we use spaces, no trailing semi-colons and prefer nice thin functions/conditionals where reasonable.
+
+More generic points about contributing to this repo can be found in [CONTRIBUTING.md](https://github.com/yjimk/doshii-sdk/blob/master/CONTRIBUTING.md)
 
 ## License
 

@@ -17,6 +17,8 @@ $ yarn add doshii-sdk
 
 Your clientId and clientSecret will be picked up by default if they're set in your environment variables as 'DOSHII_CLIENT_ID' and 'DOSHII_CLIENT_SECRET', both or none must be set.
 
+I would suggest only using the default 'v3' for version.  Specifying 'v2' will work for some of these methods, but reliability may be lacking.
+
 ```js
 // Initialize the library
 const Doshii = require('doshii-sdk')({
@@ -39,7 +41,7 @@ Doshii.Locations.retrieveAll()
   })
 
 Doshii.Locations.findMenu({
-  id: 'p7PEkVxe'
+  id: 'HASHED_LOCATION_ID'
 }, (err, result) => {
   if (err) // Manage any errors here
   // Do awesome stuff here

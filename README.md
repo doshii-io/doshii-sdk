@@ -5,6 +5,8 @@ Our API has been designed specifically to provide seamless integration into any 
 
 Looking to integrate? Check us out at [Doshii.io](http://doshii.io) and one of our awesome staff will hook you up with an API key.
 
+A breakdown of all the methods available are available on the [wiki](https://github.com/yjimk/doshii-sdk/wiki) page
+
 ## Installation
 
 ```sh
@@ -48,6 +50,10 @@ Doshii.Locations.findMenu({
 })
 ```
 A breakdown of the methods available are available on the [wiki](https://github.com/yjimk/doshii-sdk/wiki) page
+
+## WebSockets
+
+On initialization, a connection to the Doshii WebSocket server will be established.
 
 ## Contributing
 

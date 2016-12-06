@@ -51,9 +51,48 @@ Doshii.Locations.findMenu({
 ```
 A breakdown of the methods available are available on the [wiki](https://github.com/yjimk/doshii-sdk/wiki) page
 
-## WebSockets
+## Doshii WebSocket
 
-On initialization, a connection to the Doshii WebSocket server will be established.
+This library also includes a wrapper for Doshii WebSocket events. While WebSockets aren't mandatory to make your project work and gain certification, they will make development vastly simpler. Instead of manually polling Doshii, the WebSocket will send you exactly what you're after. All you need to is listen.
+
+```js
+// Establish a connection to the Doshii WebSocket
+const DoshiiSocket = Doshii.WebSocket()
+// Your authKey and environment will be generated in the same manner as you initialize the library
+
+// Now lets ping the server and send a heartbeat, just to make sure it knows you're listening
+DoshiiSocket.on('open', () => {
+  console.log('Connection to the Doshii WebSocket established')
+  function heartbeat () {
+    let timestamp = Date.now()
+    console.log(`primus::ping::${timestamp}`)
+    DoshiiSocket.send(`"primus::ping::${timestamp}"`)
+  }
+  heartbeat()
+  setInterval(heartbeat, 15000)
+})
+
+// And add an error catcher in case there are any surprises
+DoshiiSocket.on('error', (error) => {
+  console.log(error)
+})
+```
+
+There are a number of events which are handled by the Doshii WebSocket. A complete list can be found in the [Doshii WebSocket documentation](http://docs.doshii.co/api/v3/partner/#api-WebSocket), while examples of all the methods can be found in the [wiki](https://github.com/yjimk/doshii-sdk/wiki/WebSockets). The underlying library is `ws`, more information about this lib can be found [here](https://github.com/websockets/ws)
+
+Here's a quick example of a socket event listener.
+
+```js
+// Listen for the 'order_updated' event and then do stuff with it
+DoshiiSocket.addEventListener('order_updated', (event) => {
+  console.log('order_updated')
+  if (!event) return
+  event = JSON.parse(event.data)
+  console.log(event)
+  if (!event.emit) return
+  console.log(event.emit)
+})
+```
 
 ## Contributing
 

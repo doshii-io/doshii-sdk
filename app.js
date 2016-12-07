@@ -17,6 +17,15 @@ DoshiiSocket.on('open', () => {
   setInterval(heartbeat, 15000)
 })
 
+DoshiiSocket.addEventListener('message', (event) => {
+  console.log('message')
+  if (!event) return
+  event = JSON.parse(event.data)
+  console.log(event)
+  if (!event.emit) return
+  console.log(event.emit)
+})
+
 DoshiiSocket.addEventListener('order_updated', (event) => {
   console.log('order_updated')
   if (!event) return

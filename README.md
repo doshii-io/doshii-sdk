@@ -59,18 +59,7 @@ This library also includes a wrapper for Doshii WebSocket events. While WebSocke
 // Establish a connection to the Doshii WebSocket
 const DoshiiSocket = Doshii.WebSocket()
 // Your authKey and environment will be generated in the same manner as you initialize the library
-
-// Now lets ping the server and send a heartbeat, just to make sure it knows you're listening
-DoshiiSocket.on('open', () => {
-  console.log('Connection to the Doshii WebSocket established')
-  function heartbeat () {
-    let timestamp = Date.now()
-    console.log(`primus::ping::${timestamp}`)
-    DoshiiSocket.send(`"primus::ping::${timestamp}"`)
-  }
-  heartbeat()
-  setInterval(heartbeat, 15000)
-})
+// It will also automatically ping the server and send a heartbeat, just to make sure it knows you're listening
 
 // And add an error catcher in case there are any surprises
 DoshiiSocket.on('error', (error) => {
@@ -83,14 +72,13 @@ There are a number of events which are handled by the Doshii WebSocket. A comple
 Here's a quick example of a socket event listener.
 
 ```js
+// Listen for the generic 'message' event. You should receive a 'pong' every 15 seconds.
+DoshiiSocket.on('message', (data) => {
+  console.log('message', data)
+})
 // Listen for the 'order_updated' event and then do stuff with it
-DoshiiSocket.addEventListener('order_updated', (event) => {
-  console.log('order_updated')
-  if (!event) return
-  event = JSON.parse(event.data)
-  console.log(event)
-  if (!event.emit) return
-  console.log(event.emit)
+DoshiiSocket.on('order_updated', (data) => {
+  console.log('order_updated', data)
 })
 ```
 

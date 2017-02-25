@@ -1,12 +1,9 @@
 {
   "name": "doshii-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A NodeJS wrapper for the Doshii Partner API",
   "homepage": "https://github.io/yjimk/doshii-sdk",
   "author": "Jimmy Cann (mail@jimmycann.com)",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "test": "./node_modules/.bin/_mocha ./test/index.js"
   },

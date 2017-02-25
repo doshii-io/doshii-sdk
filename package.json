@@ -1,6 +1,6 @@
 {
   "name": "doshii-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A NodeJS wrapper for the Doshii Partner API",
   "homepage": "https://github.io/yjimk/doshii-sdk",
   "author": "Jimmy Cann (mail@jimmycann.com)",
@@ -37,7 +37,7 @@
       "mocha": true
     }
   },
-  "repository": "yjimk/doshii-sdk",
+  "repository": "https://yjimk@github.com/yjimk/doshii-sdk.git",
   "dependencies": {
     "bluebird": "^3.4.6",
     "btoa": "^1.1.2",

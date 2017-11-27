@@ -27,10 +27,12 @@ const Doshii = require('doshii-sdk')({
   clientId: 'YOUR_DOSHII_CLIENT_ID',
   clientSecret: 'YOUR_DOSHII_CLIENT_SECRET',
   env: 'sandbox',
-  version: 'v3'
+  version: 'v3',
+  silent: false
 })
 
 // The above settings would result in a base path of https://sandbox.doshii.co/partner/v3
+// The silent flag enables/disables the heartbeat console output
 ```
 
 Both promises and callbacks are supported by this library

@@ -1,6 +1,6 @@
 {
   "name": "@mryum/doshii-sdk",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A NodeJS wrapper for the Doshii Partner API",
   "homepage": "https://github.io/yjimk/doshii-sdk",
   "author": "Jimmy Cann (mail@jimmycann.com)",

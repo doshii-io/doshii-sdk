@@ -1,11 +1,11 @@
 {
-  "name": "doshii-sdk",
-  "version": "1.0.11",
+  "name": "@mryum/doshii-sdk",
+  "version": "1.0.12",
   "description": "A NodeJS wrapper for the Doshii Partner API",
   "homepage": "https://github.io/yjimk/doshii-sdk",
   "author": "Jimmy Cann (mail@jimmycann.com)",
   "scripts": {
-    "test": "./node_modules/.bin/_mocha ./test/index.js"
+    "test": "_mocha ./test/index.js"
   },
   "main": "./lib/doshii.js",
   "keywords": [
@@ -37,7 +37,10 @@
       "mocha": true
     }
   },
-  "repository": "https://yjimk@github.com/yjimk/doshii-sdk.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://davjones0@github.com/davjones0/doshii-sdk.git"
+  },
   "dependencies": {
     "bluebird": "^3.4.6",
     "btoa": "^1.1.2",
@@ -45,5 +48,12 @@
     "qs": "^6.3.0",
     "request": "^2.79.0",
     "ws": "^1.1.1"
+  },
+  "bugs": {
+    "url": "https://github.com/davjones0/doshii-sdk/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }

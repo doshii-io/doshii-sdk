@@ -59,6 +59,7 @@ describe('Locations', () => {
         Doshii.Locations.subscribe({
           locationId: '8KXM0OD4'
         }).then((result) => {
+          console.log(result)
           assert.isOk(result, 'returned a result')
           expect(result).to.be.ok
           done()
@@ -75,6 +76,7 @@ describe('Locations', () => {
         Doshii.Locations.subscribe({
           locationId: '8KXM0OD4'
         }).then((result) => {
+          console.log(result)
           assert.isOk(result, 'returned a result')
           expect(result).to.be.ok
           done()

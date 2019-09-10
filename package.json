@@ -1,6 +1,6 @@
 {
   "name": "@mryum/doshii-sdk",
-  "version": "1.0.26",
+  "version": "1.1.0",
   "description": "A NodeJS wrapper for the Doshii Partner API",
   "homepage": "https://github.com/mr-yum/doshii-sdk",
   "author": "Mr Yum (dev@mryum.com.au)",

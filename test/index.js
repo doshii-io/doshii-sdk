@@ -53,6 +53,40 @@ describe('Locations', () => {
       })
     })
   })
+  describe('.subscribe', () => {
+    describe('POST /partner/v3/locations/:id/subscription', () => {
+      it('should subscribe to location', (done) => {
+        Doshii.Locations.subscribe({
+          locationId: '8KXM0OD4'
+        }).then((result) => {
+          console.log(result)
+          assert.isOk(result, 'returned a result')
+          expect(result).to.be.ok
+          done()
+        }).catch((err) => {
+          assert.isNotOk(err, 'returned an error')
+          done()
+        })
+      })
+    })
+  })
+  describe('.unsubscribe', () => {
+    describe('DELETE /partner/v3/locations/:id/subscription', () => {
+      it('should unsubscribe from location', (done) => {
+        Doshii.Locations.subscribe({
+          locationId: '8KXM0OD4'
+        }).then((result) => {
+          console.log(result)
+          assert.isOk(result, 'returned a result')
+          expect(result).to.be.ok
+          done()
+        }).catch((err) => {
+          assert.isNotOk(err, 'returned an error')
+          done()
+        })
+      })
+    })
+  })
 })
 
 describe('Members', () => {

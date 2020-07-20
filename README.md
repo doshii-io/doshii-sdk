@@ -1,6 +1,14 @@
 # Doshii Partner SDK [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > A wrapper for the Doshii Partner API
 
+>## Archived and Deprecated
+>
+>We are in the process of re-building the Node.js SDK for the Doshii Partner API. As such, it is highly recommended that this
+SDK not be used for current API development. The repo has been archived and will remain read-only until
+the Doshii team has had an opportunity to issue an updated release that
+provides better support for the new features of the Doshii Partner API. Stay tuned.
+---
+
 Our API has been designed specifically to provide seamless integration into any POS, whether cloud or legacy. Built on the cloud, our SSL-secure API provides two-way communication between the POS and any app integrated with Doshii. Simply put, we're connecting hospitality.
 
 Looking to integrate? Check us out at [Doshii.io](http://doshii.io) and one of our awesome staff will hook you up with an API key.
